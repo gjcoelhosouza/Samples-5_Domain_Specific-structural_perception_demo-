@@ -22,6 +22,12 @@ include_directories(../../../Common)
 if(WIN32)
     set(PC_GLUT_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../Common")
     set(PC_GLUT_LIBRARY_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../Common/lib/x64")
+    # The GLEW library built on Windows on Arm system is named as glew32.lib/glew32.dll by default.
+    if(EXISTS "${PC_GLUT_LIBRARY_DIRS}/glew32.lib")
+        set(GLEW_LIB_NAME "glew32")
+    else()
+        set(GLEW_LIB_NAME "glew64")
+    endif()
 endif()
 
 find_package(OpenGL)
@@ -61,7 +67,7 @@ target_compile_features(fluidsGL PRIVATE cxx_std_17 cuda_std_17)
         if(WIN32)
             target_link_libraries(fluidsGL
                 ${PC_GLUT_LIBRARY_DIRS}/freeglut.lib
-                ${PC_GLUT_LIBRARY_DIRS}/glew64.lib
+                ${PC_GLUT_LIBRARY_DIRS}/${GLEW_LIB_NAME}.lib
             )
 
             add_custom_command(TARGET fluidsGL
@@ -74,7 +80,7 @@ target_compile_features(fluidsGL PRIVATE cxx_std_17 cuda_std_17)
             add_custom_command(TARGET fluidsGL
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_CURRENT_SOURCE_DIR}/../../../bin/win64/$<CONFIGURATION>/glew64.dll
+                ${CMAKE_CURRENT_SOURCE_DIR}/../../../bin/win64/$<CONFIGURATION>/${GLEW_LIB_NAME}.dll
                 ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>
             )
         endif()

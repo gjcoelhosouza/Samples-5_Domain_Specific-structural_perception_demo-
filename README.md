@@ -390,11 +390,20 @@ OpenGL is a graphics library used for 2D and 3D rendering. On systems which supp
 
 OpenGL ES is an embedded systems graphics library used for 2D and 3D rendering. On systems which support OpenGL ES, NVIDIA's OpenGL ES implementation is provided with the CUDA Driver.
 
+#### Freeglut
+
+Freeglut is an open-source software library that serves as a replacement for the original OpenGL Utility Toolkit (GLUT). Its primary purpose is to make it easier for developers to create and manage windows containing OpenGL contexts, as well as handle input from devices like the mouse, keyboard, and joystick, across a wide range of platforms. To set up Freeglut on a Windowson on ARM system, you need to download the source from [Freeglut website](https://freeglut.sourceforge.net/), build freeglut on your system, and copy the freeglut.lib into the folder `./Common/lib/x64` and copy the freeglut.dll file into the `./bin/win64/${BUILD_TYPE}` execution folder.
+
 #### Vulkan
 
 Vulkan is a low-overhead, cross-platform 3D graphics and compute API. Vulkan targets high-performance realtime 3D graphics applications such as video games and interactive media across all platforms. On systems which support Vulkan, NVIDIA's Vulkan implementation is provided with the CUDA Driver. For building and running Vulkan applications one needs to install the [Vulkan SDK](https://www.lunarg.com/vulkan-sdk/).
 
+#### GLEW
+
+GLEW (OpenGL Extension Wrangler Library) is a cross-platform, open-source C/C++ library designed to simplify the process of using modern OpenGL features and extensions. Its main function is to dynamically load OpenGL function pointers at runtime, allowing developers to access both core OpenGL functions and additional features provided by hardware vendors, known as extensions. To set up GLEW on a Windows on ARM system, you need to download the source from [GLEW website](https://glew.sourceforge.net/), build GLEW on your system, and copy the glew32.lib into the folder `./Common/lib/x64` and the glew32.dll into the `./bin/win64/${BUILD_TYPE}` execution folder.
+
 #### GLFW
+
 GLFW is a lightweight, open-source library designed for managing OpenGL, OpenGL ES, and Vulkan contexts. It simplifies the process of creating and managing windows, handling user input (keyboard, mouse, and joystick), and working with multiple monitors in a cross-platform manner.
 
 To set up GLFW on a Windows system, Download the pre-built binaries from [GLFW website](https://www.glfw.org/download.html) and extract the zip file into the folder, pass the GLFW include header folder as `-DGLFW_INCLUDE_DIR` and lib folder as `-DGLFW_LIB_DIR` for cmake configuring.
