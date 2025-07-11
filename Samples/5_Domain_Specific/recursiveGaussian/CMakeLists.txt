@@ -22,6 +22,12 @@ include_directories(../../../Common)
 if(WIN32)
     set(PC_GLUT_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../Common")
     set(PC_GLUT_LIBRARY_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../../../Common/lib/x64")
+    # The GLEW library built on Windows on Arm system is named as glew32.lib/glew32.dll by default.
+    if(EXISTS "${PC_GLUT_LIBRARY_DIRS}/glew32.lib")
+        set(GLEW_LIB_NAME "glew32")
+    else()
+        set(GLEW_LIB_NAME "glew64")
+    endif()
 endif()
 
 find_package(OpenGL)
@@ -59,7 +65,7 @@ if(${OpenGL_FOUND})
         if(WIN32)
             target_link_libraries(recursiveGaussian
                 ${PC_GLUT_LIBRARY_DIRS}/freeglut.lib
-                ${PC_GLUT_LIBRARY_DIRS}/glew64.lib
+                ${PC_GLUT_LIBRARY_DIRS}/${GLEW_LIB_NAME}.lib
             )
 
             add_custom_command(TARGET recursiveGaussian
@@ -72,7 +78,7 @@ if(${OpenGL_FOUND})
             add_custom_command(TARGET recursiveGaussian
                 POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
-                ${CMAKE_CURRENT_SOURCE_DIR}/../../../bin/win64/$<CONFIGURATION>/glew64.dll
+                ${CMAKE_CURRENT_SOURCE_DIR}/../../../bin/win64/$<CONFIGURATION>/${GLEW_LIB_NAME}.dll
                 ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>
             )
         endif()
