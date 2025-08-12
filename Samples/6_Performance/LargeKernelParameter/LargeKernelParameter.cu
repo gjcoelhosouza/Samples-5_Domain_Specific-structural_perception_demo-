@@ -100,6 +100,18 @@ int main()
     int rc;
     cudaFree(0);
 
+    // Check compute capability - large kernel parameters require SM 7.0+
+    cudaDeviceProp deviceProp;
+    int            devID;
+    checkCudaErrors(cudaGetDevice(&devID));
+    checkCudaErrors(cudaGetDeviceProperties(&deviceProp, devID));
+
+    if (deviceProp.major < 7) {
+        printf("LargeKernelParameter requires SM 7.0 or higher. Exiting...\n");
+        printf("Current device: %s (SM %d.%d)\n", deviceProp.name, deviceProp.major, deviceProp.minor);
+        exit(EXIT_WAIVED);
+    }
+
     param_t       p;
     param_large_t p_large;
 
