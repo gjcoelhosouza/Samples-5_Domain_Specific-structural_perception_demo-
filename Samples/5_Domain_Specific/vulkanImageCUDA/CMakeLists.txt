@@ -28,8 +28,17 @@ include(CheckIncludeFile)
 # Check for the GLFW/glfw3.h header
 check_include_file("GLFW/glfw3.h" HAVE_GLFW3_H)
 
-# Find GLFW header and lib for Windows
-if(WIN32 OR CMAKE_CROSSCOMPILING)
+# Check for SUSE Linux
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    file(READ "/etc/os-release" OS_RELEASE_CONTENTS)
+    if(OS_RELEASE_CONTENTS MATCHES "ID=[^ ]*suse[^ ]*")
+        message(STATUS "SUSE Linux detected")
+        set(SUSE_LINUX TRUE)
+    endif()
+endif()
+
+# Find GLFW header and lib for Windows and SUSE Linux
+if(WIN32 OR CMAKE_CROSSCOMPILING OR SUSE_LINUX)
     set(GLFW_INCLUDE_DIRS "${GLFW_INCLUDE_DIR}" "${CMAKE_INCLUDE_PATH}")
     find_file(GLFW3_H "GLFW/glfw3.h" PATHS ${GLFW_INCLUDE_DIRS})
     find_library(GLFW3_LIB
@@ -63,7 +72,7 @@ if(${Vulkan_FOUND})
                 ${Vulkan_LIBRARIES}
                 OpenGL::GL
             )
-            if(WIN32 OR CMAKE_CROSSCOMPILING)
+            if(WIN32 OR CMAKE_CROSSCOMPILING OR SUSE_LINUX)
                 target_include_directories(vulkanImageCUDA PUBLIC
                     ${GLFW_INCLUDE_DIRS}
                 )
@@ -73,6 +82,12 @@ if(${Vulkan_FOUND})
             else()
                 target_link_libraries(vulkanImageCUDA
                     glfw
+                )
+            endif()
+            # Need to add X11 for SUSE Linux explicitly
+            if(SUSE_LINUX)
+                target_link_libraries(vulkanImageCUDA
+                    X11
                 )
             endif()
             add_custom_command(TARGET vulkanImageCUDA POST_BUILD
