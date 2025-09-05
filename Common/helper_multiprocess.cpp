@@ -188,7 +188,7 @@ int ipcCreateSocket(ipcHandle *&handle, const char *name,
   char path_name[50];
 
   // Create unique name for the socket with path if SOCK_FOLDER is set.
-  sprintf(path_name, "%s%u", SOCK_FOLDER, getpid());
+  sprintf(path_name, "%s/%u", getSocketFolder().c_str(), getpid());
 
   unlink(path_name);
   memset(&servaddr, 0, sizeof(servaddr));
@@ -230,7 +230,7 @@ int ipcOpenSocket(ipcHandle *&handle) {
   char temp[50];
 
   // Create unique name for the socket with path if SOCK_FOLDER is set.
-  sprintf(temp, "%s%u", SOCK_FOLDER, getpid());
+  sprintf(temp, "%s/%u", getSocketFolder().c_str(), getpid());
 
   strcpy(cliaddr.sun_path, temp);
   if (bind(sock, (struct sockaddr *)&cliaddr, sizeof(cliaddr)) < 0) {
@@ -367,7 +367,7 @@ int ipcSendShareableHandle(ipcHandle *handle,
   memset(&cliaddr, 0, sizeof(cliaddr));
   cliaddr.sun_family = AF_UNIX;
   char temp[20];
-  sprintf(temp, "%s%u", SOCK_FOLDER, process);
+  sprintf(temp, "%s/%u", getSocketFolder().c_str(), process);
   strcpy(cliaddr.sun_path, temp);
   len = sizeof(cliaddr);
 

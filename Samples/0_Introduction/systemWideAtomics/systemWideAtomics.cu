@@ -297,6 +297,9 @@ int main(int argc, char **argv)
         exit(EXIT_WAIVED);
     }
 
+    int concurrentManagedAccess;
+    checkCudaErrors(cudaDeviceGetAttribute(&concurrentManagedAccess, cudaDevAttrConcurrentManagedAccess, dev_id));
+
     if (device_prop.major < 6) {
         printf("%s: requires a minimum CUDA compute 6.0 capability, waiving "
                "testing.\n",
@@ -326,6 +329,12 @@ int main(int argc, char **argv)
     atom_arr[7] = atom_arr[9] = 0xff;
 
     atomicKernel<<<numBlocks, numThreads>>>(atom_arr);
+
+    // Do device synchronize for devices that don't support concurrent managed access such as WSL.
+    if (!concurrentManagedAccess) {
+        checkCudaErrors(cudaDeviceSynchronize());
+    }
+
     atomicKernel_CPU(atom_arr, numBlocks * numThreads);
 
     checkCudaErrors(cudaDeviceSynchronize());

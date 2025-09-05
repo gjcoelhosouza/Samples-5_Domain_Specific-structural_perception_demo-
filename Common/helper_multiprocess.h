@@ -52,14 +52,12 @@
 #include <memory.h>
 #include <sys/un.h>
 #endif
+#include <filesystem>
 #include <vector>
 
-// Define "/tmp" as socket creating folder for QNX
-#if defined(__QNX__)
-#define SOCK_FOLDER "/tmp/" 
-#else
-#define SOCK_FOLDER ""
-#endif
+inline std::string getSocketFolder() {
+    return std::filesystem::temp_directory_path().string();
+}
 
 typedef struct sharedMemoryInfo_st {
     void *addr;
