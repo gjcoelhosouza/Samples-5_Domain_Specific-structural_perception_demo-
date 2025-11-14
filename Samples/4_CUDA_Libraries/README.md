@@ -4,9 +4,6 @@
 ### [batchCUBLAS](./batchCUBLAS)
 A CUDA Sample that demonstrates how using batched CUBLAS API calls to improve overall performance.
 
-### [batchedLabelMarkersAndLabelCompressionNPP](./batchedLabelMarkersAndLabelCompressionNPP)
-An NPP CUDA Sample that demonstrates how to use the NPP label markers generation and label compression functions based on a Union Find (UF) algorithm including both single image and batched image versions.
-
 ### [boxFilterNPP](./boxFilterNPP)
 A NPP CUDA Sample that demonstrates how to use NPP FilterBox function to perform a Box Filter.
 
@@ -33,18 +30,6 @@ This sample implements a conjugate gradient solver on GPU using CUBLAS and CUSPA
 
 ### [cudaNvSci](./cudaNvSci)
 This sample demonstrates CUDA-NvSciBuf/NvSciSync Interop. Two CPU threads import the NvSciBuf and NvSciSync into CUDA to perform two image processing algorithms on a ppm image - image rotation in 1st thread & rgba to grayscale conversion of rotated image in 2nd thread. Currently only supported on Ubuntu 18.04
-
-### [cudaNvSciNvMedia](./cudaNvSciNvMedia)
-This sample demonstrates CUDA-NvMedia interop via NvSciBuf/NvSciSync APIs. Note that this sample only supports cross build from x86_64 to aarch64, aarch64 native build is not supported. For detailed workflow of the sample please check cudaNvSciNvMedia_Readme.pdf in the sample directory.
-
-### [cuDLAErrorReporting](./cuDLAErrorReporting)
-This sample demonstrates how DLA errors can be detected via CUDA.
-
-### [cuDLAHybridMode](./cuDLAHybridMode)
-This sample demonstrates cuDLA hybrid mode wherein DLA can be programmed using CUDA.
-
-### [cuDLAStandaloneMode](./cuDLAStandaloneMode)
-This sample demonstrates cuDLA standalone mode wherein DLA can be programmed without using CUDA.
 
 ### [cuSolverDn_LinearSolver](./cuSolverDn_LinearSolver)
 A CUDA Sample that demonstrates cuSolverDN's LU, QR and Cholesky factorization.

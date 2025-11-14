@@ -35,14 +35,8 @@ Naturally(Hadamard)-ordered Fast Walsh Transform for batching vectors of arbitra
 ### [FDTD3d](./FDTD3d)
 This sample applies a finite differences time domain progression stencil on a 3D surface.
 
-### [fluidsD3D9](./fluidsD3D9)
-An example of fluid simulation using CUDA and CUFFT, with Direct3D 9 rendering.  A Direct3D Capable device is required.
-
 ### [fluidsGL](./fluidsGL)
 An example of fluid simulation using CUDA and CUFFT, with OpenGL rendering.
-
-### [fluidsGLES](./fluidsGLES)
-An example of fluid simulation using CUDA and CUFFT, with OpenGLES rendering.
 
 ### [HSOpticalFlow](./HSOpticalFlow)
 Variational optical flow estimation example.  Uses textures for image operations. Shows how simple PDE solver can be accelerated with CUDA.
@@ -57,10 +51,7 @@ This sample extracts a geometric isosurface from a volume dataset using the marc
 This sample evaluates fair call price for a given set of European options using the Monte Carlo approach, taking advantage of all CUDA-capable GPUs installed in the system. This sample use double precision hardware if a GTX 200 class GPU is present.  The sample also takes advantage of CUDA 4.0 capability to supporting using a single CPU thread to control multiple GPUs
 
 ### [nbody](./nbody)
-This sample demonstrates efficient all-pairs simulation of a gravitational n-body simulation in CUDA.  This sample accompanies the GPU Gems 3 chapter "Fast N-Body Simulation with CUDA".  With CUDA 5.5, performance on Tesla K20c has increased to over 1.8TFLOP/s single precision.  Double Performance has also improved on all Kepler and Fermi GPU architectures as well.  Starting in CUDA 4.0, the nBody sample has been updated to take advantage of new features to easily scale the n-body simulation across multiple GPUs in a single PC.  Adding "-numbodies=<bodies>" to the command line will allow users to set # of bodies for simulation.  Adding “-numdevices=<N>” to the command line option will cause the sample to use N devices (if available) for simulation.  In this mode, the position and velocity data for all bodies are read from system memory using “zero copy” rather than from device memory.  For a small number of devices (4 or fewer) and a large enough number of bodies, bandwidth is not a bottleneck so we can achieve strong scaling across these devices.
-
-### [nbody_opengles](./nbody_opengles)
-This sample demonstrates efficient all-pairs simulation of a gravitational n-body simulation in CUDA. Unlike the OpenGL nbody sample, there is no user interaction.
+This sample demonstrates efficient all-pairs simulation of a gravitational n-body simulation in CUDA.  This sample accompanies the GPU Gems 3 chapter "Fast N-Body Simulation with CUDA".  With CUDA 5.5, performance on Tesla K20c has increased to over 1.8TFLOP/s single precision.  Double Performance has also improved on all Kepler and Fermi GPU architectures as well.  Starting in CUDA 4.0, the nBody sample has been updated to take advantage of new features to easily scale the n-body simulation across multiple GPUs in a single PC.  Adding "-numbodies=<bodies>" to the command line will allow users to set # of bodies for simulation.  Adding "-numdevices=<N>" to the command line option will cause the sample to use N devices (if available) for simulation.  In this mode, the position and velocity data for all bodies are read from system memory using "zero copy" rather than from device memory.  For a small number of devices (4 or fewer) and a large enough number of bodies, bandwidth is not a bottleneck so we can achieve strong scaling across these devices.
 
 ### [nbody_screen](./nbody_screen)
 This sample demonstrates efficient all-pairs simulation of a gravitational n-body simulation in CUDA. Unlike the OpenGL nbody sample, there is no user interaction.
@@ -83,15 +74,6 @@ This sample implements Niederreiter Quasirandom Sequence Generator and Inverse C
 ### [recursiveGaussian](./recursiveGaussian)
 This sample implements a Gaussian blur using Deriche's recursive method. The advantage of this method is that the execution time is independent of the filter width.
 
-### [simpleD3D10](./simpleD3D10)
-Simple program which demonstrates interoperability between CUDA and Direct3D10. The program generates a vertex array with CUDA and uses Direct3D10 to render the geometry.  A Direct3D Capable device is required.
-
-### [simpleD3D10RenderTarget](./simpleD3D10RenderTarget)
-Simple program which demonstrates interop of rendertargets between Direct3D10 and CUDA. The program uses RenderTarget positions with CUDA and generates a histogram with visualization.  A Direct3D10 Capable device is required.
-
-### [simpleD3D10Texture](./simpleD3D10Texture)
-Simple program which demonstrates how to interoperate CUDA with Direct3D10 Texture.  The program creates a number of D3D10 Textures (2D, 3D, and CubeMap) which are generated from CUDA kernels. Direct3D then renders the results on the screen.  A Direct3D10 Capable device is required.
-
 ### [simpleD3D11](./simpleD3D11)
 Simple program which demonstrates  how to use the CUDA D3D11 External Resource Interoperability APIs to update D3D11 buffers from CUDA and synchronize between D3D11 and CUDA with Keyed Mutexes.
 
@@ -102,20 +84,8 @@ Simple program which demonstrates Direct3D11 Texture interoperability with CUDA.
 ### [simpleD3D12](./simpleD3D12)
 A program which demonstrates Direct3D12 interoperability with CUDA.  The program creates a sinewave in DX12 vertex buffer which is created using CUDA kernels. DX12 and CUDA synchronizes using DirectX12 Fences. Direct3D then renders the results on the screen.  A DirectX12 Capable NVIDIA GPU is required on Windows10 or higher OS.
 
-### [simpleD3D9](./simpleD3D9)
-Simple program which demonstrates interoperability between CUDA and Direct3D9. The program generates a vertex array with CUDA and uses Direct3D9 to render the geometry.  A Direct3D capable device is required.
-
-### [simpleD3D9Texture](./simpleD3D9Texture)
-Simple program which demonstrates Direct3D9 Texture interoperability with CUDA.  The program creates a number of D3D9 Textures (2D, 3D, and CubeMap) which are written to from CUDA kernels. Direct3D then renders the results on the screen.  A Direct3D capable device is required.
-
 ### [simpleGL](./simpleGL)
 Simple program which demonstrates interoperability between CUDA and OpenGL. The program modifies vertex positions with CUDA and uses OpenGL to render the geometry.
-
-### [simpleGLES](./simpleGLES)
-Demonstrates data exchange between CUDA and OpenGL ES (aka Graphics interop). The program modifies vertex positions with CUDA and uses OpenGL ES to render the geometry.
-
-### [simpleGLES_EGLOutput](./simpleGLES_EGLOutput)
-Demonstrates data exchange between CUDA and OpenGL ES (aka Graphics interop). The program modifies vertex positions with CUDA and uses OpenGL ES to render the geometry, and shows how to render directly to the display using the EGLOutput mechanism and the DRM library.
 
 ### [simpleGLES_screen](./simpleGLES_screen)
 Demonstrates data exchange between CUDA and OpenGL ES (aka Graphics interop). The program modifies vertex positions with CUDA and uses OpenGL ES to render the geometry.
@@ -125,9 +95,6 @@ This sample demonstrates Vulkan CUDA Interop. CUDA imports the Vulkan vertex buf
 
 ### [simpleVulkanMMAP](./simpleVulkanMMAP)
  This sample demonstrates Vulkan CUDA Interop via cuMemMap APIs. CUDA exports buffers that Vulkan imports as vertex buffer. CUDA invokes kernels to operate on vertices and synchronizes with Vulkan through vulkan semaphores imported by CUDA. This sample depends on Vulkan SDK, GLFW3 libraries, for building this sample please refer to "Build_instructions.txt" provided in this sample's directory
-
-### [SLID3D10Texture](./SLID3D10Texture)
-Simple program which demonstrates SLI with Direct3D10 Texture interoperability with CUDA.  The program creates a D3D10 Texture which is written to from a CUDA kernel. Direct3D then renders the results on the screen.  A Direct3D Capable device is required.
 
 ### [smokeParticles](./smokeParticles)
 Smoke simulation with volumetric shadows using half-angle slicing technique. Uses CUDA for procedural simulation, Thrust Library for sorting algorithms, and OpenGL for graphics rendering.
@@ -140,9 +107,6 @@ This sample implements Sobol Quasirandom Sequence Generator.
 
 ### [stereoDisparity](./stereoDisparity)
 A CUDA program that demonstrates how to compute a stereo disparity map using SIMD SAD (Sum of Absolute Difference) intrinsics.  Requires Compute Capability 2.0 or higher.
-
-### [VFlockingD3D10](./VFlockingD3D10)
-The sample models formation of V-shaped flocks by big birds, such as geese and cranes. The algorithms of such flocking are borrowed from the paper "V-like formations in flocks of artificial birds" from Artificial Life, Vol. 14, No. 2, 2008. The sample has CPU- and GPU-based implementations. Press 'g' to toggle between them. The GPU-based simulation works many times faster than the CPU-based one. The printout in the console window reports the simulation time per step. Press 'r' to reset the initial distribution of birds.
 
 ### [volumeFiltering](./volumeFiltering)
 This sample demonstrates 3D Volumetric Filtering using 3D Textures and 3D Surface Writes.

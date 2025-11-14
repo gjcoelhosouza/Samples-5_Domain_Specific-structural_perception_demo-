@@ -449,6 +449,9 @@ Samples that demonstrate performance optimization.
 ### [7. libNVVM](./Samples/7_libNVVM/README.md)
 Samples that demonstrate the use of libNVVVM and NVVM IR.
 
+### [8. Platform Specific](./Samples/8_Platform_Specific/Tegra/README.md)
+Samples that are specific to certain platforms (Tegra, cuDLA, NvMedia, NvSci, OpenGL ES).
+
 ## Dependencies
 
 Some CUDA Samples rely on third-party applications and/or libraries, or features provided by the CUDA Toolkit and Driver, to either build or execute. These dependencies are listed below.

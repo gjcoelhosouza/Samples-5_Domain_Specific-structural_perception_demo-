@@ -10,9 +10,6 @@ This sample implements a separable convolution filter of a 2D signal with a gaus
 ### [convolutionTexture](./convolutionTexture)
 Texture-based implementation of a separable 2D convolution with a gaussian kernel. Used for performance comparison against convolutionSeparable.
 
-### [cuHook](./cuHook)
-This sample demonstrates how to build and use an intercept library with CUDA. The library has to be loaded via LD_PRELOAD, e.g. LD_PRELOAD=<full_path>/libcuhook.so.1 ./cuHook
-
 ### [dct8x8](./dct8x8)
 This sample demonstrates how Discrete Cosine Transform (DCT) for blocks of 8 by 8 pixels can be performed using CUDA: a naive implementation by definition and a more traditional approach used in many libraries. As opposed to implementing DCT in a fragment shader, CUDA allows for an easier and more efficient implementation.
 
@@ -21,9 +18,6 @@ Demonstrates CUDA and EGL Streams interop, where consumer's EGL Stream is on one
 
 ### [EGLStream_CUDA_Interop](./EGLStream_CUDA_Interop)
 Demonstrates data exchange between CUDA and EGL Streams.
-
-### [EGLSync_CUDAEvent_Interop](./EGLSync_CUDAEvent_Interop)
-Demonstrates interoperability between CUDA Event and EGL Sync/EGL Image using which one can achieve synchronization on GPU itself for GL-EGL-CUDA operations instead of blocking CPU for synchronization.
 
 ### [eigenvalues](./eigenvalues)
 The computation of all or a subset of all eigenvalues is an important problem in Linear Algebra, statistics, physics, and many other fields. This sample demonstrates a parallel implementation of a bisection algorithm for the computation of all eigenvalues of a tridiagonal symmetric matrix of arbitrary size with CUDA.
