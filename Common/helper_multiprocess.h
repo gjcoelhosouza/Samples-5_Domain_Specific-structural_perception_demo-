@@ -54,8 +54,14 @@
 #endif
 #include <vector>
 
+// The Unix domain sockets creating folder on QNX has been restricted to qnx6-mounted directories since QNX SDP 8.0.3.
+#if defined(__QNX__)
+    #include <string>
+    inline std::string getSocketFolder() {
+        return "/storage";
+    }
 // Simple filesystem compatibility for GCC 8.x
-#if defined(__GNUC__) && __GNUC__ < 9
+#elif defined(__GNUC__) && __GNUC__ < 9
     #include <cstdlib>
     #include <string>
     inline std::string getSocketFolder() {
