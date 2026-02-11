@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+project(cuFAST_demo LANGUAGES CXX CUDA)
+
+# Find CUDA
+find_package(CUDA REQUIRED)
+
+# Set CUDA architectures (adjust as needed for specific GPUs)
+set(CUDA_ARCHITECTURES "70;75;80;86") # Example: Volta, Turing, Ampere, Ada Lovelace
+
+# Add the executable
+add_executable(cuFAST_demo main.cpp cuFAST_demo.cu)
+
+# Link against CUDA, cuSOLVER, and cuBLAS libraries
+target_link_libraries(cuFAST_demo PRIVATE CUDA::cudart CUDA::cusolver CUDA::cublas)
+
+# Set include directories
+target_include_directories(cuFAST_demo PRIVATE ${CUDA_INCLUDE_DIRS})
+
+# Set output directory for the executable
+set_target_properties(cuFAST_demo PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
